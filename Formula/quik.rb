@@ -3,6 +3,11 @@ class Quik < Formula
   homepage "https://github.com/mihaicrisan04/quik"
   license "MIT"
 
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
+
   on_macos do
     on_arm do
       url "https://github.com/mihaicrisan04/quik/releases/download/v0.1.0/quik-v0.1.0-aarch64-apple-darwin.tar.gz"
@@ -19,11 +24,6 @@ class Quik < Formula
       url "https://github.com/mihaicrisan04/quik/releases/download/v0.1.0/quik-v0.1.0-x86_64-unknown-linux-gnu.tar.gz"
       sha256 "0aad4a8da264580a5f31c43be80910e46c0a3a89e70bfc2b271c4b8e52875345"
     end
-  end
-
-  livecheck do
-    url :stable
-    strategy :github_latest
   end
 
   def install
