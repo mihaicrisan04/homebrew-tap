@@ -5,6 +5,11 @@ class Airdrop < Formula
   sha256 "57097badaabbb2b54471b9b4a0ae195963d2aeb34d5d13e70d6a863a26888676"
   license "MIT"
 
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
+
   depends_on macos: :ventura
   depends_on xcode: :build
 
