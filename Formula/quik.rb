@@ -1,7 +1,6 @@
 class Quik < Formula
   desc "Inline AI prompt for your zsh session. Cmd+Enter, ask anything, streams in place"
   homepage "https://github.com/mihaicrisan04/quik"
-  version "0.1.0"
   license "MIT"
 
   on_macos do
@@ -22,9 +21,14 @@ class Quik < Formula
     end
   end
 
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
+
   def install
     bin.install "quik"
-    (share/"quik").install "shell/quik.plugin.zsh"
+    pkgshare.install "shell/quik.plugin.zsh"
     doc.install "README.md", "LICENSE"
     (doc/"docs").install Dir["docs/*"]
   end
@@ -33,7 +37,7 @@ class Quik < Formula
     <<~EOS
       To enable the Cmd+Enter prompt, add this to your ~/.zshrc:
 
-        source "#{opt_share}/quik/quik.plugin.zsh"
+        source "#{opt_pkgshare}/quik.plugin.zsh"
 
       You also need at least one backend CLI on your PATH:
         - claude (https://docs.claude.com/en/docs/claude-code)
